@@ -1,3 +1,8 @@
+<div class="sortOptions" ng-controller="SortCtrl">
+  <a style="margin-left: 30px;" href="" ng-click="predicate = 'visits'; reverse=!reverse">Sort by Visits</a> | 
+  <a href="" ng-click="predicate = 'updated_at'; reverse=!reverse">Sort by Last Click</a>
+</div>
+
 <ul>
   <li ng-repeat="link in links | filter:searchText | orderBy:predicate:reverse">
     <div class=".left">
@@ -7,6 +12,10 @@
     <div class=".right">
       {{ link.visits }} visits so far
       <br/>Last click at: {{ link.updated_at }}
-    </div><hr/>
+    </div>
+    <div>
+      <a ng-href="{{ link.base_url }}/{{ link.code }}/stats">Stats</a>
+    </div>
+    <hr/>
   </li>
 </ul>

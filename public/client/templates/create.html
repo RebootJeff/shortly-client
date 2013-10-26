@@ -1,6 +1,7 @@
-<form>
-    <input class="text" type="text" name="url" ng-model="linkToSubmit">
+<form name="form">
+    <input type="url" name="url" ng-model="linkToSubmit">
+    <!-- <h5 ng-show="form.url.$invalid">Please enter a valid url</h5> -->
     <input type="submit" value="Shorten" ng-click="submitLink()">
 </form>
-<!-- <img class="spinner" src="/spiffygif_46x46.gif"> -->
+<img ng-show="showSpinner" class="spinner" src="/spiffygif_46x46.gif">
 <div class="message"></div>'

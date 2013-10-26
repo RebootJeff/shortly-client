@@ -30,7 +30,18 @@ angular.module('shortly', [])
   })
   .controller('CreateCtrl', function($scope, $http){
     $scope.submitLink = function(){
-      var data = JSON.stringify({url: $scope.linkToSubmit});
-      $http.post('/links', data);
+      if($scope.form.url.$valid){
+        var data = JSON.stringify({url: $scope.linkToSubmit});
+        $scope.showSpinner = true;
+        var resetForm = function(){
+          $scope.showSpinner = false;
+          $scope.linkToSubmit = "";
+        };
+        $http.post('/links', data).success(function(){
+          setTimeout(function(){
+            $scope.$apply(resetForm);
+          }, 300);
+        });
+      }
     };
   });
