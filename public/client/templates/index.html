@@ -1,5 +1,12 @@
 <ul>
-  <li ng-repeat="link in links">
-    {{ link.url }} => <a ng-href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+  <li ng-repeat="link in links | filter:searchText | orderBy:predicate:reverse">
+    <div class=".left">
+      <h4>{{ link.url }}</h4>
+      <a ng-href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+    </div>
+    <div class=".right">
+      {{ link.visits }} visits so far
+      <br/>Last click at: {{ link.updated_at }}
+    </div><hr/>
   </li>
 </ul>

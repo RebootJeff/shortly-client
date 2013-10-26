@@ -122,7 +122,7 @@ get '/links' do
         redirect '/'
     else
         user = User.find_by_username(session[:username])
-        links = Link.all
+        links = Link.order('visits DESC')
         links.map { |link|
             link.as_json.merge(base_url: request.base_url)
         }.to_json

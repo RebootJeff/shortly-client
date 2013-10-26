@@ -153,3 +153,12 @@ form input[type=text] {
 .form input {
   margin: 10px auto 0px;
 }
+
+/* added by Jeff and Ken */
+.left {
+  float: left;
+  background-color: yellow;
+}
+.right {
+  float: right;
+}

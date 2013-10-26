@@ -25,6 +25,9 @@ angular.module('shortly', [])
         console.log('IndexCtrl Error! Data:', data);
       });
   })
+  .controller('SortCtrl', function($scope){
+    $scope.predicate = 'visits';
+  })
   .controller('CreateCtrl', function($scope, $http){
     $scope.submitLink = function(){
       var data = JSON.stringify({url: $scope.linkToSubmit});
