@@ -1,0 +1,16 @@
+<div ng-app="shortly">
+  <h1>Shortly</h1>
+  <div class="navigation">
+    <ul>
+      <li><a href="#/" class="index">All Links</a></li>
+      <li><a href="#/create" class="create">Shorten</a></li>
+      <li>
+        <form>
+          <input class="filter" type="text" name="searchText">
+        </form>
+      </li>
+      <li><a href="http://localhost:4567/logout" class="logout">Log Out</a>
+    </ul>
+  </div>
+  <div id="container" ng-view></div>
+</div>

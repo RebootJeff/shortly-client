@@ -1,0 +1,10 @@
+<h1>URL : <%= @link.url %></h1>
+
+<div>
+<h3>Total Visits : <%= @link.visits %></h3>
+
+<% @link.clicks.all.each do |click| %>
+<div><%= click.created_at %></div>
+<% end %>
+</div>
+
