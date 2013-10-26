@@ -141,7 +141,7 @@ post '/links' do
         link = user.links.find_by_url(uri.to_s) ||
                user.links.create( url: uri.to_s, title: get_url_title(uri), user_id: user.id)
         # img = Nokogiri::HTML(open("#{uri.to_s}")).xpath('//img').first.attribute('src').to_s
-        link.update_attribute(:image, img)
+        # link.update_attribute(:image, img)
         link.touch
         link.as_json.merge(base_url: request.base_url).to_json
     end
@@ -167,21 +167,22 @@ end
 # Utility
 ###########################################################
 
-def read_url_head url
-    head = ""
-    url.open do |u|
-        begin
-            line = u.gets
-            next  if line.nil?
-            head += line
-            break if line =~ /<\/head>/
-        end until u.eof?
-    end
-    head + "</html>"
-end
+# def read_url_head url
+#     head = ""
+#     url.open do |u|
+#         begin
+#             line = u.gets
+#             next  if line.nil?
+#             head += line
+#             break if line =~ /<\/head>/
+#         end until u.eof?
+#     end
+#     head + "</html>"
+# end
 
 def get_url_title url
     # Nokogiri::HTML.parse( read_url_head url ).title
-    result = read_url_head(url).match(/<title>(.*)<\/title>/)
-    result.nil? ? "" : result[1]
+    # result = read_url_head(url).match(/<title>(.*)<\/title>/)
+    # result.nil? ? "" : result[1]
+    url.to_s.slice(8)
 end

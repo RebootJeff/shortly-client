@@ -1,1 +1,5 @@
-<h1 ng-repeat="link in links">{{ link.title }}</h1>
+<ul>
+  <li ng-repeat="link in links">
+    {{ link.url }} => <a ng-href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+  </li>
+</ul>
